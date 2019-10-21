@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased !important;
+  background: #dadbd3;
+}
+
+header {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 127px;
+  background: #009688;
+}
+
+/* LOGIN PAGE */
+
+div.login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.login div.login-card {
+  background: #fff;
+  width: 400px;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+div.login div.login-card form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+div.login div.login-card form label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+div.login div.login-card form input {
+  height: 35px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ddd;
+}
+
+div.login div.login-card form button {
+  background: #09d261;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+div.login div.login-card form button:hover {
+  background: #08b854;
+}
+
+/* DASHBOARD PAGE */
