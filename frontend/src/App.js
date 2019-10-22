@@ -5,7 +5,7 @@ import "./styles.css";
 function App() {
   return (
     <>
-      <header />
+      <header className="main" />
       <Routes /> 
     </>
   );
