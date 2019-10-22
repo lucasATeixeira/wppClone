@@ -7,10 +7,10 @@ export default function Contact() {
         <div className="avatar">LT</div>
         <div className="name-message">
           <span className="name">Lucas Teixeira</span>
-          <span className="last-message">
+          <p className="last-message">
             Olá, coloando muitas mensagens para ver como vai ficar quando eu ver
             quantas palavras tiverem ali
-          </span>
+          </p>
         </div>
       </div>
       <span className="last-seen">8:00</span>

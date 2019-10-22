@@ -78,3 +78,77 @@ div.login div.login-card form button:hover {
 }
 
 /* DASHBOARD PAGE */
+
+div.dashboard {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  padding: 20px 0;
+}
+
+div.dashboard div.dashboard-card {
+  background: #fff;
+  height: 100%;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+}
+
+/* CONTACTS LIST */
+
+div.contacts-list {
+  width: 420px;
+}
+
+div.contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 20px;
+}
+
+div.contact:hover {
+  background: #f4f5f5;
+  cursor: pointer;
+  transform: scale(1.005);
+}
+
+div.contacts-list div.active {
+  background: #e9ebeb;
+}
+
+div.user-informations {
+  display: flex;
+  align-items: center;
+}
+
+p.last-message {
+  white-space: nowrap;
+  width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #666;
+  font-size: 15px;
+}
+
+div.user-informations div.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: grey;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+span.last-seen {
+  color: #b5b5b5;
+  font-size: 12px;
+}
+
+div.dashboard div.dashboard-card div.conversation {
+  background: grey;
+}
