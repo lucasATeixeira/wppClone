@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
+import io from "socket.io-client";
 
 import api from "../../services/api";
 
@@ -21,6 +22,23 @@ export default function Conversation({ activeConversation }) {
     setMessages(messages => [...messages, data]);
     setNewMessage("");
   }
+
+  useEffect(() => {
+    const socket = io(
+      process.env.REACT_APP_API_URL || "http://localhost:3333",
+      {
+        query: { user: user._id }
+      }
+    );
+
+    socket.on("message", message => {
+      if (!activeConversation) return;
+      const parsedMessage = JSON.parse(message);
+      if (parsedMessage.sender === activeConversation._id) {
+        setMessages(messages => [...messages, parsedMessage]);
+      }
+    });
+  }, [activeConversation, user]);
 
   useEffect(() => {
     async function fetchConversation() {

@@ -49,7 +49,7 @@ module.exports = {
   async store(req, res) {
     const { message } = req.body;
     const { receiver_id } = req.params;
-    const { user_id } = req.headers;
+    const { user_id } = req.headers;    
 
     const userReceiver = await User.findById(receiver_id);
     const userSender = await User.findById(user_id);
@@ -67,6 +67,13 @@ module.exports = {
       sender: user_id,
       message
     });
+
+    const targetSocket = req.connectedUsers[receiver_id]
+    
+
+    if (targetSocket) {      
+      req.io.to(targetSocket).emit('message', JSON.stringify(conversation))
+    }
 
     return res.json(conversation);
   },
