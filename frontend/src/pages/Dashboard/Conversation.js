@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import io from "socket.io-client";
-
 import api from "../../services/api";
 
-export default function Conversation({ activeConversation }) {
+export default function Conversation({ activeConversation, socket }) {
   const user = JSON.parse(localStorage.getItem("@wpp: user"));
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
@@ -24,13 +22,6 @@ export default function Conversation({ activeConversation }) {
   }
 
   useEffect(() => {
-    const socket = io(
-      process.env.REACT_APP_API_URL || "http://localhost:3333",
-      {
-        query: { user: user._id }
-      }
-    );
-
     socket.on("message", message => {
       if (!activeConversation) return;
       const parsedMessage = JSON.parse(message);
@@ -38,7 +29,7 @@ export default function Conversation({ activeConversation }) {
         setMessages(messages => [...messages, parsedMessage]);
       }
     });
-  }, [activeConversation, user]);
+  }, [activeConversation, socket]);
 
   useEffect(() => {
     async function fetchConversation() {

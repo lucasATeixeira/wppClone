@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
+import io from "socket.io-client";
 
 import api from "../../services/api";
 
@@ -8,6 +9,11 @@ import Conversation from "./Conversation";
 
 export default function Dashboard() {
   const user = JSON.parse(localStorage.getItem("@wpp: user"));
+
+  const socket = io(process.env.REACT_APP_API_URL || "http://localhost:3333", {
+    query: { user: user._id }
+  });
+
   const [contacts, setContacts] = useState([]);
   const [activeConversation, setActiveConversation] = useState(null);
 
@@ -38,7 +44,10 @@ export default function Dashboard() {
             ))}
         </div>
         <div className="conversation">
-          <Conversation activeConversation={activeConversation} />
+          <Conversation
+            socket={socket}
+            activeConversation={activeConversation}
+          />
         </div>
       </div>
     </div>
