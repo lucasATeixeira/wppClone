@@ -16,14 +16,14 @@ export default function Main({ navigation }) {
   useEffect(() => {
     async function fetchContacts() {
       const { data } = await api.get("/users");
-      setContacts(data);
+      const user = JSON.parse(await AsyncStorage.getItem("user"));
+      setContacts(data.filter(contact => contact._id !== user._id));
     }
     fetchContacts();
   }, []);
 
-  function handleStartConversation() {
-    const user = navigation.getParam("user");
-    navigation.navigate("Conversation", { user });
+  function handleStartConversation(item) {
+    navigation.navigate("Conversation", item);
   }
 
   return (
@@ -32,7 +32,7 @@ export default function Main({ navigation }) {
         data={contacts}
         renderItem={({ item }) => (
           <TouchableOpacity
-            onPress={handleStartConversation}
+            onPress={() => handleStartConversation(item)}
             activeOpacity={0.5}
             style={styles.contact}
           >

@@ -7,7 +7,6 @@ import Conversation from "./pages/Conversation";
 import AuthLoadingScreen from "./pages/AuthLoadingScreen";
 
 const headerOptions = {
-  // headerLayoutPreset: "center",
   headerBackTitleVisible: false,
   defaultNavigationOptions: {
     headerStyle: {
